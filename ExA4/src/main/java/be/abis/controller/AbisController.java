@@ -14,24 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AbisController {
 
     @Autowired
-    CourseService courseService;
-
-    @Autowired
     TrainingService trainingService;
 
 
     @GetMapping("/")
     public String showCourse(Model model) {
-        Course c = courseService.findCourse(7900);
+        Course c = trainingService.getCourse(7900);
         model.addAttribute("course", c);
         return "course";
     }
 
-    @GetMapping("/training")
-    public String showTraining(Model model) {
-        Person p = trainingService.findPerson(2);
-        List<Course> courses = trainingService.showFollowedCourses(p);
-        model.addAttribute("courses", courses);
-        return "course";
-    }
 }

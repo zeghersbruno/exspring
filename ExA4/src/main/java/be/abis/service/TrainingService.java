@@ -22,4 +22,6 @@ public interface TrainingService {
     // Course
     public List<Course> showFollowedCourses(Person person);
     public void enrollForSession(Person person, Course course, LocalDate date) throws EnrollException;
+    public Course getCourse(int id);
+    public List<Course> getAllCourses();
 }

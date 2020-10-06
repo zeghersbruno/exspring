@@ -3,7 +3,6 @@ package be.abis.service;
 import be.abis.exception.EnrollException;
 import be.abis.model.Course;
 import be.abis.model.Person;
-import be.abis.repository.FilePersonRepository;
 import be.abis.repository.PersonRepository;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -16,6 +15,9 @@ public class AbisTrainingService implements TrainingService {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    CourseService courseService;
 
     @Override
     public Person findPerson(int id) {
@@ -49,13 +51,23 @@ public class AbisTrainingService implements TrainingService {
 
     @Override
     public List<Course> showFollowedCourses(Person person) {
-
+        //TODO
         return null;
     }
 
     @Override
     public void enrollForSession(Person person, Course course, LocalDate date)
+        //TODO
         throws EnrollException {
+    }
 
+    @Override
+    public List<Course> getAllCourses() {
+        return courseService.findAllCourses();
+    }
+
+    @Override
+    public Course getCourse(int id) {
+        return courseService.findCourse(id);
     }
 }
