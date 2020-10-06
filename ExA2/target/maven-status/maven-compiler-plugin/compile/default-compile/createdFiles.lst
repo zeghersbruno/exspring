@@ -1,0 +1,11 @@
+be\abis\model\Address.class
+be\abis\repository\FilePersonRepository.class
+be\abis\AbisApplication.class
+be\abis\model\Course.class
+be\abis\repository\CourseRepository.class
+be\abis\model\Person.class
+be\abis\repository\MemoryCourseRepository.class
+be\abis\service\AbisCourseService.class
+be\abis\model\Company.class
+be\abis\repository\PersonRepository.class
+be\abis\service\CourseService.class
