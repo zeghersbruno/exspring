@@ -1,4 +1,4 @@
-package be.abis.exercise.repository;
+package main.java.be.abis.exercise.repository;
 
 import java.util.ArrayList;
 import java.util.List;

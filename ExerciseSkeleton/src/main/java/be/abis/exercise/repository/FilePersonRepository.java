@@ -1,17 +1,15 @@
-package be.abis.exercise.repository;
+package main.java.be.abis.exercise.repository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import be.abis.exercise.model.Address;
-import be.abis.exercise.model.Company;
-import be.abis.exercise.model.Person;
+import main.java.be.abis.exercise.model.Address;
+import main.java.be.abis.exercise.model.Company;
+import main.java.be.abis.exercise.model.Person;
 
 public class FilePersonRepository implements PersonRepository {
 
