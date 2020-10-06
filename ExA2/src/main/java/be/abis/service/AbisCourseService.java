@@ -15,22 +15,16 @@ public class AbisCourseService implements CourseService {
 
     @Override
     public List<Course> findAllCourses() {
-        List<Course> courses = new ArrayList<>();
-        courses = courseRepository.findAllCourses();
-        return courses;
+        return courseRepository.findAllCourses();
     }
 
     @Override
     public Course findCourse(int id) {
-        Course course = new Course();
-        course = courseRepository.findCourse(id);
-        return course;
+        return courseRepository.findCourse(id);
     }
 
     @Override
     public Course findCourse(String shortTitle) {
-        Course course = new Course();
-        course = courseRepository.findCourse(shortTitle);
-        return course;
+        return courseRepository.findCourse(shortTitle);
     }
 }

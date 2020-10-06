@@ -1,6 +1,5 @@
 package be.abis.it;
 
-import be.abis.model.Course;
 import be.abis.service.AbisCourseService;
 import be.abis.service.CourseService;
 import org.junit.Before;
@@ -10,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -29,13 +28,16 @@ public class AbisCourseServiceTest {
     @Test
     public void course7900ShouldBeFound() {
         //arrange
-        Course course = new Course();
 
         //act
-        course = courseService.findCourse(7900);
 
         //assert
-        assertNotNull(course);
+        assertNotNull(courseService.findCourse(7900).getShortTitle());
+    }
+
+    @Test
+    public void checkCourse7900HasPriceHigher400() {
+        assertThat(courseService.findCourse(7900).getPricePerDay(), greaterThan(400.0));
     }
 
     }
