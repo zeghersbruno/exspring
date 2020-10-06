@@ -20,11 +20,6 @@ public class AbisCourseServiceTest {
     @Autowired
     CourseService courseService;
 
-    @Before
-    public void setUp() {
-        courseService = new AbisCourseService();
-    }
-
     @Test
     public void course7900ShouldBeFound() {
         //arrange
