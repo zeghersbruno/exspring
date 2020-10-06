@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: be.abis.it.AbisCourseServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.979 s <<< FAILURE! - in be.abis.it.AbisCourseServiceTest
+course7900ShouldBeFound  Time elapsed: 0.503 s  <<< ERROR!
+java.lang.NullPointerException
+	at be.abis.it.AbisCourseServiceTest.course7900ShouldBeFound(AbisCourseServiceTest.java:35)
+
