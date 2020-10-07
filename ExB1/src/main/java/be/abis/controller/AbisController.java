@@ -18,18 +18,19 @@ public class AbisController {
 
     Person person;
 
-    @GetMapping("/course")
-    public String showCourse(Model model) {
-        Course c = trainingService.getCourse(7900);
-        model.addAttribute("course", c);
-        return "course";
-    }
 
     @GetMapping("/")
     public String showLogin(Model model) {
         Login login = new Login();
         model.addAttribute("login", login);
         return "login";
+    }
+
+    @GetMapping("/course")
+    public String showCourse(Model model) {
+        Course c = trainingService.getCourse(7900);
+        model.addAttribute("course", c);
+        return "course";
     }
 
     @GetMapping("/login")
@@ -39,6 +40,11 @@ public class AbisController {
         return "login";
     }
 
+    @GetMapping("/person")
+    public String showPerson(Model model) {
+        model.addAttribute("person", person);
+        return "person";
+    }
 
     @GetMapping("/welcome")
     public String showWelcome(Model model) {

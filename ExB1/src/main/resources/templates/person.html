@@ -3,16 +3,16 @@
       xmlns:margin-left="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome ...</title>
+  <title>Person Administration ...</title>
 </head>
 <body>
-<h1>Welcome <span th:text="${person.firstName}"> !</span></h1>
+<h1>Person <span th:text="${person.personId}"> </span></h1>
 
 <div>
-  Where do you want to go now ?
+  Here are your details
   <ul>
-    <li> <a href="http://localhost/exercise/course">Search for Courses ...</a></li>
-    <li> <a href="http://localhost/exercise/person">Person Administration ...</a></li>
+    <li> first name : <span th:text="${person.firstName}"></span></li>
+    <li> last  name : <span th:text="${person.lastName}"></span></li>
   </ul>
 </div>
 <form action="#" th:action="@{/logout}" method="get">
