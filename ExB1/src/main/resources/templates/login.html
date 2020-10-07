@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login Information</title>
+</head>
+<body>
+<h1> Login </h1>
+	<div class="container">
+		<form action="#" method="post" th:action="@{/login}"
+					th:object="${person}">
+			<h2 class="mt-4">
+			Hello <span th:text="*{firstName}" />
+			</h2>
+		</form>
+	</div>
+</body>
+</html>
