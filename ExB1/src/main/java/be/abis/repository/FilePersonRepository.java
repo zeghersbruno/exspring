@@ -37,6 +37,7 @@ public class FilePersonRepository implements PersonRepository {
 			br = new BufferedReader(new FileReader(fileLoc));
 			String s = null;
 			while ((s = br.readLine()) != null) {
+				System.out.println("person " + s.toString());
 				String[] vals = s.split(";");
 				if (!vals[0].equals("")) {
 					Address a = new Address();

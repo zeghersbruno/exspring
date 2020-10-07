@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome ...</title>
+</head>
+<body>
+<h1>Welcome <span th:text="${person.firstName}">!</span></h1>
+
+<div>
+  Where do you want to go now ?
+  <ul>
+    <li> <a href="http://localhost/exercise/course">Courses ...</a></li>
+    <li> <a href="http://localhost/exercise">Login again ...</a></li>
+  </ul>
+</div>
+<form action="#" th:action="@{/logout}" method="get">
+  <span style=""margin-left: 200px"><input type="submit" th:value="Logout" /></span>
+</form>
+</body>
+</html>

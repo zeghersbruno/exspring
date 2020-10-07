@@ -16,12 +16,12 @@ public class AbisController {
     @Autowired
     TrainingService trainingService;
 
-//    @GetMapping("/")
-//    public String showCourse(Model model) {
-//        Course c = trainingService.getCourse(7900);
-//        model.addAttribute("course", c);
-//        return "course";
-//    }
+    @GetMapping("/course")
+    public String showCourse(Model model) {
+        Course c = trainingService.getCourse(7900);
+        model.addAttribute("course", c);
+        return "course";
+    }
 
     @GetMapping("/")
     public String showLogin(Model model) {
@@ -30,10 +30,23 @@ public class AbisController {
         return "login";
     }
 
-//    @PostMapping("/login")
-//    public String submitLogin(Model model, Person p) {
-//        Person person = trainingService.findPerson(p.getEmailAddress(), p.getPassword());
-//        model.addAttribute("name", person.getFirstName());
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String showLoginAgain(Model model) {
+        Login login = new Login();
+        model.addAttribute("login", login);
+        return "login";
+    }
+
+
+    @PostMapping("/")
+    public String submitLogin(Model model, Person p) {
+        Person person = trainingService.findPerson(p.getEmailAddress(), p.getPassword());
+        if (person==null) {
+            System.out.println("person not found");
+            return "redirect:/login";
+        } else {
+            model.addAttribute("person", person.getFirstName());
+            return "redirect:/welcome";
+        }
+    }
 }
