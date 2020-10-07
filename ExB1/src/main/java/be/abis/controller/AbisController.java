@@ -16,6 +16,8 @@ public class AbisController {
     @Autowired
     TrainingService trainingService;
 
+    Person person;
+
     @GetMapping("/course")
     public String showCourse(Model model) {
         Course c = trainingService.getCourse(7900);
@@ -38,9 +40,17 @@ public class AbisController {
     }
 
 
+    @GetMapping("/welcome")
+    public String showWelcome(Model model) {
+        model.addAttribute("person", person);
+        return "welcome";
+    }
+
+
     @PostMapping("/")
-    public String submitLogin(Model model, Person p) {
-        Person person = trainingService.findPerson(p.getEmailAddress(), p.getPassword());
+    public String submitLogin(Model model, Login login) {
+        System.out.println("person à logger " + login.getEmail() + " " + login.getPassword());
+        person = trainingService.findPerson(login.getEmail(), login.getPassword());
         if (person==null) {
             System.out.println("person not found");
             return "redirect:/login";
