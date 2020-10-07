@@ -29,13 +29,22 @@ public class AbisControllerTest {
     @Autowired
     private AbisController abisController;
 
+//    @Test
+//    public void giveMeSomethingFromCourse() throws Exception {
+//        mockMvc.perform(get("/"))
+//            .andExpect(status().is2xxSuccessful())
+//            .andExpect(view().name("course"))
+//            .andExpect(model().size(1))
+//            .andExpect(model().attributeExists("course"));
+//    }
+
     @Test
-    public void giveMeSomethingFromCourse() throws Exception {
+    public void giveMeSomethingFromLogin() throws Exception {
         mockMvc.perform(get("/"))
             .andExpect(status().is2xxSuccessful())
-            .andExpect(view().name("course"))
+            .andExpect(view().name("login"))
             .andExpect(model().size(1))
-            .andExpect(model().attributeExists("course"));
+            .andExpect(model().attributeExists("person"));
     }
 
     @Test
