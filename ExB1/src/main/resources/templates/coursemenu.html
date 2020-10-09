@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Course Menu</title>
+</head>
+<body>
+<div class="container">
+	<h1><span th:text="${person.firstName}">anybody</span> make your choice ...</h1>
+	<br>
+	<h2> Course Menu </h2>
+	<br>
+	<ul>
+		<li>
+			<a href="showallcourses">Show all courses</a><br />
+		</li>
+		<li>
+			<a href="findacoursebyid">Find a course by id</a><br />
+		</li>
+		<li>
+			<a href="findacoursebytitle">Find a course by short title</a><br />
+		</li>
+	</ul>
+	<form action="#" method="get" th:action="@{/welcome}">
+		<div>
+			<span style="margin-left: 200px"><input type="submit" th:value="Back" /></span>
+		</div>
+	</form>
+</div>
+</body>
+</html>

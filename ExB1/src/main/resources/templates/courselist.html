@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Courses</title>
+</head>
+<body>
+	<h1>Here is the course list</h1>
+	<table border="1">
+		<thead>
+		<tr>
+			<th>Short Title</th>
+			<th>Long Title</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="c : ${courses}">
+			<td th:text="${c.shortTitle}"></td>
+			<td th:text="${c.longTitle}"></td>
+		</tr>
+		</tbody>
+	</table>
+</body>
+</html>

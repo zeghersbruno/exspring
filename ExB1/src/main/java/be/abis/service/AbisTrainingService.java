@@ -67,7 +67,12 @@ public class AbisTrainingService implements TrainingService {
     }
 
     @Override
-    public Course getCourse(int id) {
-        return courseService.findCourse(id);
+    public Course getCourseById(int courseId) {
+        return courseService.findCourse(courseId);
+    }
+
+    @Override
+    public Course getCourseByShortName(String shortName) {
+        return courseService.findCourse(shortName);
     }
 }

@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Show All Courses</title>
+</head>
+<body>
+<div class="container">
+  <p>
+  <h2>All courses</h2>
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th class="text-left">ID</th>
+      <th class="text-left">Title</th>
+      <th class="text-left">Nb days</th>
+      <th class="text-left">Price by day</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="course : ${courses}">
+      <td th:text="${course.courseId}"></td>
+      <td th:text="${course.shortTitle}"></td>
+      <td th:text="${course.numberOfDays}"></td>
+      <td th:text="${course.pricePerDay}"></td>
+    </tr>
+    </tbody>
+  </table>
+  </p>
+  <form action="#" method="get" th:action="@{/coursemenu}">
+    <div>
+      <button type="submit" class="btn btn-primary">Back</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

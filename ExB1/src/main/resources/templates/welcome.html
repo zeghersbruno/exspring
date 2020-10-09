@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Welcome ...</title>
 </head>
 <body>
-<h1>Welcome <span th:text="${person.firstName}"> !</span></h1>
+<h1>Welcome <span th:text="${person.firstName}">anybody</span> !</h1>
 
 <div>
-  Where do you want to go now ?
+  What do you want to do now ?<br>
   <ul>
-    <li> <a href="http://localhost/exercise/course">Search for Courses ...</a></li>
-    <li> <a href="http://localhost/exercise/person">Person Administration ...</a></li>
+    <li> <a href="coursemenu">Search for Courses ...</a></li>
+    <li> <a href="personmenu">Person Administration ...</a></li>
   </ul>
 </div>
 <form action="#" th:action="@{/logout}" method="get">

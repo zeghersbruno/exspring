@@ -8,5 +8,6 @@ public class AbisApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AbisApplication.class);
+        System.out.println(AbisApplication.class.getName()+ " of ExB1 is running !");
     }
 }

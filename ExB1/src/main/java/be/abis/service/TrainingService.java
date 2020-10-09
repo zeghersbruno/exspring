@@ -1,10 +1,12 @@
 package be.abis.service;
 
+
 import be.abis.exception.EnrollException;
 import be.abis.model.Course;
 import be.abis.model.Person;
 import java.io.IOException;
 import java.time.LocalDate;
+
 import java.util.List;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +25,8 @@ public interface TrainingService {
     // Course
     public List<Course> showFollowedCourses(Person person);
     public void enrollForSession(Person person, Course course, LocalDate date) throws EnrollException;
-    public Course getCourse(int id);
+    public Course getCourseById(int courseId);
+    public Course getCourseByShortName(String shortName);
     public List<Course> getAllCourses();
 
 }
