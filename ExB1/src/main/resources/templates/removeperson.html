@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Remove Person</title>
+</head>
+<body>
+<div class="container">
+  <h2 class="mt-4">Delete a person</h2>
+  <form action="#" method="post" th:action="@{/removeperson}"
+        th:object="${person}">
+    <hr />
+    <div class="form-group row ">
+      <label for="personId" class="col-sm-2 col-form-label mr-0">ID</label>
+      <div class="col-sm-8">
+        <input th:field="*{personId}" type="text" class="form-control"
+               placeholder="ID">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Remove Person</button>
+      </div>
+    </div>
+    <div class="form-group row ">
+      <div class="col-sm-8">
+        <span th:text="${message}" type="text" />
+      </div>
+    </div>
+  </form>
+  <form action="#" method="get" th:action="@{/personmenu}">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Back</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

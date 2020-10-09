@@ -6,7 +6,14 @@ public class Company{
 	private String telephoneNumber;
 	private String vatNr;
 	private Address address;
-		
+
+	public Company() {
+	}
+
+	public Company(String name) {
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -1,6 +1,7 @@
 package be.abis.controller;
 
 
+import be.abis.model.Company;
 import be.abis.model.Course;
 import be.abis.model.Login;
 import be.abis.model.Person;
@@ -201,7 +202,8 @@ public class AbisController {
      */
     @GetMapping("/changepassword")
     public String getPassword(Model model, Person person) {
-        personLoggedIn = trainingService.findPerson(person.getEmailAddress(), person.getPassword());
+        System.out.println("Person logged in " + personLoggedIn.getFirstName());
+//        personLoggedIn = trainingService.findPerson(person.getEmailAddress(), person.getPassword());
         model.addAttribute("person", personLoggedIn);
         model.addAttribute("newPassword", "");
         return "changepassword";
@@ -217,6 +219,7 @@ public class AbisController {
      */
     @PostMapping("/changepassword")
     public String changePassword(Model model, Person person, String newPassword) {
+        person = personLoggedIn;
         try {
             trainingService.changePassword(person, newPassword);
         } catch (IOException e) {
@@ -237,6 +240,13 @@ public class AbisController {
         return "searchforaperson";
     }
 
+    /**
+     * HTTP POST to show all persons or one person if ID is given
+     *
+     * @param model
+     * @param person
+     * @return showallpersons.html
+     */
     @PostMapping("/showallpersons")
     public String showAllPersons(Model model, Person person) {
         List<Person> persons = new ArrayList<>();
@@ -249,5 +259,79 @@ public class AbisController {
         }
         model.addAttribute("persons", persons);
         return "showallpersons";
+    }
+
+    /**
+     * HTTP GET to show the add person page
+     *
+     * @param model
+     * @return addperson.html
+     */
+    @GetMapping("/addperson")
+    public String showAddPerson(Model model) {
+        Person person = new Person();
+        model.addAttribute("person", person);
+        return "addperson";
+    }
+
+    /**
+     * HTTP POST to add a person. The Company is added only with the name
+     *
+     * @param model
+     * @param person
+     * @return addperson.html
+     */
+    @PostMapping("/addperson")
+    public String addPerson(Model model, Person person) {
+        try {
+            Company company = new Company((person.getCompany().getName()));
+            person.setCompany(company);
+            trainingService.addPerson(person);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("person", person);
+        return "addperson";
+    }
+    /**
+     * HTTP GET to show the remove person page
+     *
+     * @param model
+     * @return removeperson.html
+     */
+    @GetMapping("/removeperson")
+    public String showRemovePerson(Model model) {
+        Person person = new Person();
+        model.addAttribute("person", person);
+        model.addAttribute("message", "");
+        return "removeperson";
+    }
+
+    /**
+     * HTTP POST to remove a person.
+     *
+     * @param model
+     * @param person
+     * @return removeperson.html
+     */
+    @PostMapping("/removeperson")
+    public String removePerson(Model model, Person person) {
+        trainingService.deletePerson(person.getPersonId());
+        model.addAttribute("person", person);
+        model.addAttribute("message", "person " + person.getPersonId()+ " removed");
+        return "removeperson";
+    }
+
+    /**
+     * HTTP GET to return to the login page when logout is pushed
+     *
+     * @param model
+     * @return
+     */
+    @GetMapping("/logout")
+    public String logout(Model model) {
+        Login login = new Login();
+        model.addAttribute("login", login);
+        return "login";
     }
 }
