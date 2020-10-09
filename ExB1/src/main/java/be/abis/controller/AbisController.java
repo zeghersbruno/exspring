@@ -6,6 +6,7 @@ import be.abis.model.Login;
 import be.abis.model.Person;
 import be.abis.service.CourseService;
 import be.abis.service.TrainingService;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -191,11 +192,62 @@ public class AbisController {
         return "showallcourses";
     }
 
-    @GetMapping("/person")
-    public String showPerson(Model model) {
+    /**
+     * HTTP GET showing the changepassword.html page to change the password
+     *
+     * @param model
+     * @param person
+     * @return changepassword.html
+     */
+    @GetMapping("/changepassword")
+    public String getPassword(Model model, Person person) {
+        personLoggedIn = trainingService.findPerson(person.getEmailAddress(), person.getPassword());
         model.addAttribute("person", personLoggedIn);
-        return "person";
+        model.addAttribute("newPassword", "");
+        return "changepassword";
     }
 
+    /**
+     * HTTP POST to change the password
+     *
+     * @param model
+     * @param person
+     * @param newPassword
+     * @return changepassword.html
+     */
+    @PostMapping("/changepassword")
+    public String changePassword(Model model, Person person, String newPassword) {
+        try {
+            trainingService.changePassword(person, newPassword);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "changepassword";
+    }
 
+    /**
+     * HTTP GET showing the search person page
+     *
+     * @param model
+     * @return person.html
+     */
+    @GetMapping("/searchforperson")
+    public String showPerson(Model model) {
+        model.addAttribute("person", personLoggedIn);
+        return "searchforaperson";
+    }
+
+    @PostMapping("/showallpersons")
+    public String showAllPersons(Model model, Person person) {
+        List<Person> persons = new ArrayList<>();
+        personLoggedIn = trainingService.findPerson(person.getPersonId());
+        if (personLoggedIn != null) {
+            persons.add(personLoggedIn);
+
+        } else {
+            persons = trainingService.getAllPersons();
+        }
+        model.addAttribute("persons", persons);
+        return "showallpersons";
+    }
 }
