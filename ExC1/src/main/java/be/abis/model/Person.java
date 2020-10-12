@@ -15,6 +15,7 @@ public class Person {
 	@NotBlank(message="Please enter a last name")
 	private String lastName;
 
+	@MinAge
 	private int age;
 
 	@Email(message="Please enter a email address ")

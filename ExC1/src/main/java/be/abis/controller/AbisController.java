@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import sun.rmi.runtime.Log;
 
 @Controller
 public class AbisController {
@@ -70,15 +71,18 @@ public class AbisController {
      * @return redirect to login or welcome HTML page
      */
     @PostMapping("/")
-    public String submitLogin(Model model, Login login) {
+    public String submitLogin(Model model, Login login, BindingResult bindingResult) {
         System.out.println("person à logger " + login.getEmail() + " " + login.getPassword());
-        personLoggedIn = trainingService.findPerson(login.getEmail(), login.getPassword());
-        if (personLoggedIn ==null) {
-            System.out.println("this person " + login.getEmail() + " was not found");
-            return "redirect:/login";
-        } else {
+
+//        personLoggedIn = trainingService.findPerson(login.getEmail(), login.getPassword());
+        if (doesPersonExist(login)) {
             model.addAttribute("person", personLoggedIn.getFirstName());
             return "redirect:/welcome";
+        } else {
+            System.out.println("this person " + login.getEmail() + " was not found");
+            bindingResult.reject("check your email and password");
+            return "redirect:/login";
+
         }
     }
 
@@ -355,5 +359,11 @@ public class AbisController {
         Login login = new Login();
         model.addAttribute("login", login);
         return "login";
+    }
+
+    private boolean doesPersonExist(Login login) {
+        personLoggedIn = trainingService.findPerson(login.getEmail(), login.getPassword());
+        if (personLoggedIn==null) return false;
+        return true;
     }
 }

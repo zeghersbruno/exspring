@@ -8,6 +8,11 @@
 	<div class="container">
 		<form action="#" method="post" th:action="@{/}" th:object="${login}">
 			<hr/>
+			<div class="form-group-row">
+				<div class="col-sm-8">
+					<span style="color: red" th:errors="*{global}"> </span>
+				</div>
+			</div>
 			<label for = "email" >Email Address</label>
 			<input th:field="*{email}"  type = "text" name="email" id="email"  placeholder="Email address">
 			<br/>

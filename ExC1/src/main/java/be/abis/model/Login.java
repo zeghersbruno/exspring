@@ -1,5 +1,6 @@
 package be.abis.model;
 
+@LoginValidation
 public class Login {
 
     private String email;
