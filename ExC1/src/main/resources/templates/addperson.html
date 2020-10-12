@@ -1,0 +1,154 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Person</title>
+</head>
+<body>
+<div class="container">
+  <h2 class="mt-4">Person result</h2>
+  <form action="#" method="post" th:action="@{/addperson}"
+        th:object="${person}">
+    <hr />
+    <div class="form-group row ">
+      <label for="personId" class="col-sm-2 col-form-label mr-0">ID</label>
+      <div class="col-sm-8">
+        <input th:field="*{personId}" type="text" class="form-control"
+               placeholder="ID">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="firstName" class="col-sm-2 col-form-label mr-0">First
+        name</label>
+      <div class="col-sm-8">
+        <input th:field="*{firstName}" type="text" class="form-control"
+               placeholder="Mandatory">
+      </div>
+      <div class="col-sm-4">
+        <span style="color: red" th:errors="*{firstName}"> </span>
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="lastName" class="col-sm-2 col-form-label mr-0">Last
+        name</label>
+      <div class="col-sm-8">
+        <input th:field="*{lastName}" type="text" class="form-control"
+               placeholder="Last name">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="age" class="col-sm-2 col-form-label mr-0">Age</label>
+      <div class="col-sm-8">
+        <input th:field="*{age}" type="text" class="form-control"
+               placeholder="Age">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="emailAddress" class="col-sm-2 col-form-label mr-0">Email</label>
+      <div class="col-sm-8">
+        <input th:field="*{emailAddress}" type="text" class="form-control"
+               placeholder="Email address">
+      </div>
+      <div class="col-sm-4">
+        <span style="color: red" th:errors="*{emailAddress}"> </span>
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="password" class="col-sm-2 col-form-label mr-0">Password</label>
+      <div class="col-sm-8">
+        <input th:field="*{password}" type="text" class="form-control"
+               placeholder="Password min 6 chars">
+      </div>
+      <div class="col-sm-4">
+        <span style="color: red" th:errors="*{password}"> </span>
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="language" class="col-sm-2 col-form-label mr-0">Language</label>
+      <div class="col-sm-8">
+        <select th:field="*{language}" class="form-control">
+          <option th:value="'FR'" th:text="Français"></option>
+          <option th:value="'NL'" th:text="Nederlands"></option>
+          <option th:value="'EN'" th:text="English"></option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="company" class="col-sm-2 col-form-label mr-0">Company
+        name</label>
+      <div class="col-sm-8">
+        <input th:field="*{company.name}" type="text" class="form-control"
+               placeholder="Mandatory">
+      </div>
+      <div class="col-sm-4">
+        <span style="color: red" th:errors="*{company.name}"> </span>
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="company" class="col-sm-2 col-form-label mr-0">Company
+        phone number</label>
+      <div class="col-sm-8">
+        <input th:field="*{company.telephoneNumber}" type="text" class="form-control"
+               placeholder="Company">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="company" class="col-sm-2 col-form-label mr-0">Company
+        vat nr</label>
+      <div class="col-sm-8">
+        <input th:field="*{company.vatNr}" type="text" class="form-control"
+               placeholder="Company">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="company" class="col-sm-2 col-form-label mr-0">Company
+        address street</label>
+      <div class="col-sm-8">
+        <input th:field="*{company.address.street}" type="text" class="form-control"
+               placeholder="Company">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="company" class="col-sm-2 col-form-label mr-0">Company
+        address nr</label>
+      <div class="col-sm-8">
+        <input th:field="*{company.address.nr}" type="text" class="form-control"
+               placeholder="Company">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="company" class="col-sm-2 col-form-label mr-0">Company
+        address zip code</label>
+      <div class="col-sm-8">
+        <input th:field="*{company.address.zipcode}" type="text" class="form-control"
+               placeholder="Company">
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label for="company" class="col-sm-2 col-form-label mr-0">Company
+        address town</label>
+      <div class="col-sm-8">
+        <input th:field="*{company.address.town}" type="text" class="form-control"
+               placeholder="Mandatory">
+      </div>
+      <div class="col-sm-4">
+        <span style="color: red" th:errors="*{company.address.town}"> </span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+
+  </form>
+  <form action="#" method="get" th:action="@{/personmenu}">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Back</button>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome ...</title>
+</head>
+<body>
+<h1>Welcome <span th:text="${person.firstName}">anybody</span> !</h1>
+
+<div>
+  What do you want to do now ?<br>
+  <ul>
+    <li> <a href="coursemenu">Search for Courses ...</a></li>
+    <li> <a href="personmenu">Person Administration ...</a></li>
+  </ul>
+</div>
+<form action="#" th:action="@{/logout}" method="get">
+  <span style="margin-left: 200px"><input type="submit" th:value="Logout" /></span>
+</form>
+</body>
+</html>

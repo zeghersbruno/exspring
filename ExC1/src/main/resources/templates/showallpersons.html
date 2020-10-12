@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Show Persons</title>
+</head>
+<body>
+<div class="container">
+  <p>
+  <h2>Persons found</h2>
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th class="text-left">ID</th>
+      <th class="text-left">First Name</th>
+      <th class="text-left">Last Name</th>
+      <th class="text-left">Email</th>
+      <th class="text-left">Language</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${persons}">
+      <td th:text="${person.personId}"></td>
+      <td th:text="${person.firstName}"></td>
+      <td th:text="${person.lastName}"></td>
+      <td th:text="${person.emailAddress}"></td>
+      <td th:text="${person.language}"></td>
+    </tr>
+    </tbody>
+  </table>
+  </p>
+  <form action="#" method="get" th:action="@{/personmenu}">
+    <div>
+      <button type="submit" class="btn btn-primary">Back</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

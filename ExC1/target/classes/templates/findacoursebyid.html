@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+  <title>Find A Course By ID</title>
+</head>
+<body>
+<div class="container">
+  <h2>Find a course by id</h2>
+  <form action="#" method="post" th:action="@{/coursefound}"
+        th:object="${course}">
+    <hr />
+    <div class="form-group row ">
+      <label for="courseId" class="col-sm-2 col-form-label mr-0">ID</label>
+      <div class="col-sm-8">
+        <input th:field="*{courseId}" type="text" class="form-control"
+               placeholder="ID">
+      </div>
+    </div>
+    <div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+  <form action="#" method="get" th:action="@{/coursemenu}">
+    <div>
+      <button type="submit" class="btn btn-primary">Back</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
