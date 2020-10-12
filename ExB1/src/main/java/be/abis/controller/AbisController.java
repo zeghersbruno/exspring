@@ -1,6 +1,7 @@
 package be.abis.controller;
 
 
+import be.abis.model.Address;
 import be.abis.model.Company;
 import be.abis.model.Course;
 import be.abis.model.Login;
@@ -10,9 +11,12 @@ import be.abis.service.TrainingService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -283,11 +287,27 @@ public class AbisController {
      * @return addperson.html
      */
     @PostMapping("/addperson")
-    public String addPerson(Model model, Person person) {
+    public String addPerson(Model model, @Valid Person person, BindingResult bindingResult) {
         try {
-            Company company = new Company((person.getCompany().getName()));
-            person.setCompany(company);
-            trainingService.addPerson(person);
+            if (bindingResult.hasErrors()) {
+                System.out.println("there are some errors on add person input");
+                model.addAttribute("person", person);
+                return "addperson";
+            } else {
+                Address address = new Address();
+                address.setNr(person.getCompany().getAddress().getNr());
+                address.setStreet(person.getCompany().getAddress().getStreet());
+                address.setTown(person.getCompany().getAddress().getTown());
+                address.setZipcode(person.getCompany().getAddress().getZipcode());
+                Company company = new Company();
+                company.setAddress(address);
+                company.setName(person.getCompany().getName());
+                company.setTelephoneNumber(person.getCompany().getTelephoneNumber());
+                company.setVatNr(person.getCompany().getVatNr());
+
+                person.setCompany(company);
+                trainingService.addPerson(person);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
