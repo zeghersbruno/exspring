@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: be.abis.it.controller.AbisControllerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.491 s - in be.abis.it.controller.AbisControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.514 s - in be.abis.it.controller.AbisControllerTest

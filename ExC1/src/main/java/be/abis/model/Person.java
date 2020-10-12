@@ -18,6 +18,7 @@ public class Person {
 	@MinAge
 	private int age;
 
+	@NotBlank(message = "Email is mandatory")
 	@Email(message="Please enter a email address ")
 	private String emailAddress;
 

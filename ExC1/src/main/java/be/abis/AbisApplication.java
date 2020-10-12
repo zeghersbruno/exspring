@@ -8,6 +8,6 @@ public class AbisApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AbisApplication.class);
-        System.out.println(AbisApplication.class.getName()+ " of ExC1 is running !");
+        System.out.println(AbisApplication.class.getName()+ " of ExC3.a is running !");
     }
 }

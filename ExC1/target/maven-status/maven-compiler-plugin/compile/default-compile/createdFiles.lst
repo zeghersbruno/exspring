@@ -4,14 +4,12 @@ be\abis\model\MinAge.class
 be\abis\service\TrainingService.class
 be\abis\model\Login.class
 be\abis\model\AgeValidator.class
-be\abis\model\LoginValidation.class
 be\abis\repository\MemoryCourseRepository.class
 be\abis\service\AbisCourseService.class
 be\abis\service\AbisTrainingService.class
 be\abis\service\CourseService.class
 be\abis\repository\FilePersonRepository.class
 be\abis\controller\AbisController.class
-be\abis\model\LoginValidator.class
 be\abis\model\Course.class
 be\abis\repository\CourseRepository.class
 be\abis\exception\EnrollException.class

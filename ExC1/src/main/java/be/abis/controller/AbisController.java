@@ -71,16 +71,16 @@ public class AbisController {
      * @return redirect to login or welcome HTML page
      */
     @PostMapping("/")
-    public String submitLogin(Model model, Login login, BindingResult bindingResult) {
+    public String submitLogin(Model model, @Valid Login login, BindingResult bindingResult) {
         System.out.println("person à logger " + login.getEmail() + " " + login.getPassword());
 
-//        personLoggedIn = trainingService.findPerson(login.getEmail(), login.getPassword());
+        if (bindingResult.hasErrors()) return "redirect:/login";
         if (doesPersonExist(login)) {
             model.addAttribute("person", personLoggedIn.getFirstName());
             return "redirect:/welcome";
         } else {
             System.out.println("this person " + login.getEmail() + " was not found");
-            bindingResult.reject("check your email and password");
+            bindingResult.reject("email", "check your email and password");
             return "redirect:/login";
 
         }
