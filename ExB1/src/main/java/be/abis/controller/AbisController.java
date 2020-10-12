@@ -203,9 +203,9 @@ public class AbisController {
     @GetMapping("/changepassword")
     public String getPassword(Model model, Person person) {
         System.out.println("Person logged in " + personLoggedIn.getFirstName());
-//        personLoggedIn = trainingService.findPerson(person.getEmailAddress(), person.getPassword());
+        Login login = new Login();
         model.addAttribute("person", personLoggedIn);
-        model.addAttribute("newPassword", "");
+        model.addAttribute("login", login);
         return "changepassword";
     }
 
@@ -213,19 +213,20 @@ public class AbisController {
      * HTTP POST to change the password
      *
      * @param model
-     * @param person
-     * @param newPassword
+     * @param login
      * @return changepassword.html
      */
     @PostMapping("/changepassword")
-    public String changePassword(Model model, Person person, String newPassword) {
-        person = personLoggedIn;
+    public String changePassword(Model model, Login login) {
+        String newPassword = login.getPassword();
+        System.out.println("new password " + newPassword);
         try {
-            trainingService.changePassword(person, newPassword);
+            trainingService.changePassword(personLoggedIn, newPassword);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "changepassword";
+        model.addAttribute("person", personLoggedIn);
+        return "personmenu";
     }
 
     /**
