@@ -1,5 +1,6 @@
 package be.abis.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 public class Company{
@@ -11,6 +12,7 @@ public class Company{
 
 	private String vatNr;
 
+	@Valid
 	private Address address;
 
 	public Company() {

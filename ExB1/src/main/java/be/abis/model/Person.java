@@ -1,5 +1,6 @@
 package be.abis.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -23,6 +24,8 @@ public class Person {
 	@Min(message = "Password should be min 6 characters", value = 6)
 	private String password;
 	private String language;
+
+	@Valid
 	private Company company;
 	
 	
